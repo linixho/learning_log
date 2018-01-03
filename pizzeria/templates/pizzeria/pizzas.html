@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+{% extends "pizzeria/base.html" %}
+
+{% block content %}
+    <p>Pizzas</p>
+    <ul>
+        {% for pizza in pizzas %}
+            <li>
+                <a href="{% url 'pizzeria:pizza' pizza.id %}">{{ pizza }}</a>
+            </li>
+            {% empty %}
+            <li>还没有收录任何比萨饼配方.</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+{% extends 'pizzeria/base.html' %}
+{% block content %}
+
+<p>Pizza: {{ pizza }}</p>
+
+<p>Toppings:</p>
+<ul>
+    {% for topping in toppings %}
+    <li>
+        <p>{{ topping.name | linebreaks }}</p>
+    </li>
+    {% empty %}
+    <li>
+        没有相应比萨的配方.
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
+</body>
+</html>

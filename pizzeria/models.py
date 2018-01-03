@@ -12,8 +12,8 @@ class Topping(models.Model):
     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
     name = models.TextField()
 
-    # class Meta:
-    #     verbose_name_plural = 'entries'
+    class Meta:
+        verbose_name_plural = 'toppings'
 
     def __str__(self):
         length = len(self.name)

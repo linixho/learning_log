@@ -18,5 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('learning_logs/', include('learning_logs.urls', namespace="learning_logs")),  # 在这要加上namespace
+    path('pizzeria/', include('pizzeria.urls', namespace="pizzeria")),
     path('admin/', admin.site.urls),
 ]
