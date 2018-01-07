@@ -1,29 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
 {% extends 'learning_logs/base.html' %}
 
-{% block content %}
-<title>{{ topic }}</title>
-<p>Topic: {{ topic }}</p>
+{% block header %}
+    <h2>{{ topic }}</h2>
+{% endblock header %}
 
-<p>Entries:</p>
-<ul>
+{% block content %}
+
+    <p>
+        <a href="{% url 'learning_logs:new_entry' topic.id %}">添加条目</a>
+    </p>
+
     {%  for entry in entries %}
-    <li>
-        <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
-        <p>{{ entry.text|linebreaks }}</p>
-    </li>
+        <div class="panel panel-deault">
+        <div class="panel-heading">
+            <h3>
+                {{ entry.date_added|date:'M d, Y H:i' }}
+                <small>
+                    <a href="{% url 'learning_logs:edit_entry' entry.id %}">编辑</a>
+                </small>
+            </h3>
+        </div>
+            <div class="panel-body">
+                {{ entry.text|linebreaks }}
+            </div>
+        </div><!-- panel -->
     {% empty %}
-    <li>
-        There are no entries for this topic yet.
-    </li>
+        There are no entries for this topi yet.
     {% endfor %}
-</ul>
 
 {% endblock content %}
-</body>
-</html>
